@@ -24,6 +24,6 @@
     }
   },
 
-  "include": ["src"],
+  "include": ["src", "src/types/tokenPayload.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

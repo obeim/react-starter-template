@@ -11,6 +11,8 @@ import { useCallback } from "react";
 import { RouteType } from "@/types";
 import BrowserNavigate from "@/components/BrowserNavigate";
 import Layout from "@/layout";
+import Login from "@/pages/auth/login/login";
+import ProtectedRoute from "./protectedRoute";
 
 const RoutesProvider = () => {
   const { user, isAuthenticated } = useAuthContext();
@@ -33,25 +35,28 @@ const RoutesProvider = () => {
 
   const router = createBrowserRouter([
     {
+      element: (
+        <ProtectedRoute case="loggedIn" turnPath={"/"}>
+          <Login />
+        </ProtectedRoute>
+      ),
+      path: "/login",
+    },
+    {
       // pareant route component
       element: <Layout />,
       // child route components
       children: routes.map((route) => {
-        if (route?.permissions?.includes("auth")) {
+        if (!isAuthenticated) {
           return {
-            element: isAuthenticated ? (
-              checkRoutePermissions(route, user?.permissions)
-            ) : (
-              <BrowserNavigate url={`/login`} />
-            ),
-            path: route.path,
-          };
-        } else {
-          return {
-            element: checkRoutePermissions(route, user?.permissions),
+            element: <BrowserNavigate url={`/login`} />,
             path: route.path,
           };
         }
+        return {
+          element: checkRoutePermissions(route, user?.permissions),
+          path: route.path,
+        };
       }),
     },
   ]);

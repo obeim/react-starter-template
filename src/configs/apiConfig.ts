@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { BaseQueryApi } from "@reduxjs/toolkit/query";
 import Cookies from "js-cookie";
 
