@@ -11,6 +11,7 @@ export interface SerializedError {
   status: number;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const middlewares: any[] = [authApi.middleware];
 
 const store = configureStore({
