@@ -1,30 +1,117 @@
-# React + TypeScript + Vite
+# React Modern Starter Template
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, opinionated React starter template featuring Vite, TypeScript, Mantine UI, Tailwind CSS, Redux Toolkit, authentication, and internationalization (i18n). This template is designed for rapid development of scalable, production-ready web applications.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- ⚡ **Vite** for fast development and builds
+- ⚛️ **React 18** with **TypeScript**
+- 🎨 **Mantine UI** with custom theming
+- 💨 **Tailwind CSS** utility-first styling
+- 🗂️ **Redux Toolkit** for state management (with **RTK Query** for data fetching)
+- 🔒 **Authentication** context with protected routes
+- 🌍 **i18n** (i18next) with English & Arabic, runtime language switching
+- 🧩 **Component-based** architecture
+- 🛣️ **React Router DOM** with layout and permission support
+- ✅ **ESLint** and **Prettier** for code quality
+- 🧪 Ready for extension with new pages, layouts, and features
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Prerequisites
 
-- Configure the top-level `parserOptions` property like this:
+- Node.js (v16+ recommended)
+- npm or yarn
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+### Installation
+
+```bash
+npm install
+# or
+yarn install
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### Development
+
+```bash
+npm run dev
+# or
+yarn dev
+```
+
+The app will be available at [http://localhost:3000](http://localhost:3000).
+
+### Build for Production
+
+```bash
+npm run build
+# or
+yarn build
+```
+
+### Preview Production Build
+
+```bash
+npm run preview
+# or
+yarn preview
+```
+
+### Linting
+
+```bash
+npm run lint
+# or
+yarn lint
+```
+
+## Project Structure
+
+```
+├── src/
+│   ├── @core/           # Core utilities (router, i18n, etc.)
+│   ├── auth/            # Authentication context and logic
+│   ├── components/      # Reusable UI components
+│   ├── configs/         # App configuration (routes, etc.)
+│   ├── layout/          # Layout components
+│   ├── pages/           # Application pages (dashboard, auth, etc.)
+│   ├── store/           # Redux store, RTK Query API, and slices
+│   ├── theme/           # Mantine theme customization
+│   ├── types/           # TypeScript types
+│   ├── utils/           # Utility functions
+│   ├── App.tsx          # Main app component (providers, theming)
+│   ├── main.tsx         # App entry point
+│   └── index.css        # Global styles
+├── public/              # Static assets
+├── index.html           # HTML entry point
+├── tailwind.config.js   # Tailwind CSS config
+├── vite.config.ts       # Vite config
+└── package.json         # Project metadata and scripts
+```
+
+## Authentication & Routing
+
+- Uses React Context for authentication state
+- Protected routes redirect unauthenticated users to `/login`
+- Route permissions supported (extendable)
+- Layout support for different route groups
+
+## Internationalization (i18n)
+
+- Powered by i18next and react-i18next
+- English and Arabic supported out of the box
+- Language switcher included on the home page
+- RTL/LTR direction handled automatically
+
+## Theming & Styling
+
+- Mantine UI with custom theme (`src/theme`)
+- Tailwind CSS for utility classes
+- Easily extendable for custom components and styles
+
+## Extending the Template
+
+- Add new pages in `src/pages` and register them in `src/configs/routes.tsx`
+- Add new Redux slices in `src/store`
+- Customize theme in `src/theme`
+- Add new languages in `src/@core/i18n`
